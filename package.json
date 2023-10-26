@@ -1,0 +1,9 @@
+{
+  "name": "hennus",
+  "version": "0.0.1",
+  "description": "Una npm para discord ",
+  "main": "index.js",
+  "repository": "git@github.com:Oscar-Dev0/Hennus.git",
+  "author": "OscarDev-JS <oscargamer162004@gmail.com>",
+  "license": "MIT"
+}
