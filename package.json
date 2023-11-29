@@ -3,7 +3,24 @@
   "version": "0.0.1",
   "description": "Una npm para discord ",
   "main": "index.js",
-  "repository": "git@github.com:Oscar-Dev0/Hennus.git",
-  "author": "OscarDev-JS <oscargamer162004@gmail.com>",
-  "license": "MIT"
+  "author": "OscarDev <oscargamer162004@gmail.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api",
+    "discord",
+    "bots",
+    "typescript",
+    "botdev"
+  ],
+  "homepage": "https://github.com/Oscar-Dev0/Hennus",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oscar-Dev0/Hennus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Oscar-Dev0/Hennus/issues"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.16"
+  }
 }
