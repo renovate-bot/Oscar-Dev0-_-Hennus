@@ -21,6 +21,10 @@
     "url": "https://github.com/Oscar-Dev0/Hennus/issues"
   },
   "devDependencies": {
-    "turbo": "^1.10.16"
+
+  },
+  "dependencies": {
+    "@discordjs/core": "latest",
+    "eventemitter2": "latest"
   }
 }
