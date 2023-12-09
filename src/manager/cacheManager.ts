@@ -1,6 +1,6 @@
 import { Collection } from "@discordjs/collection"
 
-export class CollectionBase<Key, Value> extends Collection<Key, Value> {
+export class cacheManager<Key, Value> extends Collection<Key, Value> {
 
     constructor(iterable?: Iterable<readonly [Key, Value]> | null | undefined){
         super(iterable);

@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "OscarDev <oscargamer162004@gmail.com>",
   "license": "Apache-2.0",
+  "typings": "",
   "keywords": [
     "api",
     "discord",
@@ -21,10 +22,14 @@
     "url": "https://github.com/Oscar-Dev0/Hennus/issues"
   },
   "devDependencies": {
-
+    "typescript": "latest",
+    "@types/node": "latest",
+    "@sapphire/snowflake": "latest"
   },
   "dependencies": {
-    "@discordjs/core": "latest",
-    "eventemitter2": "latest"
+    "@discordjs/core": "latest"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

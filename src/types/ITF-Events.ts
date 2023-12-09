@@ -1,3 +1,4 @@
+import { APIGuild, APIGuildMember, APIMessage, GatewayMessageCreateDispatchData } from "@discordjs/core";
 
 export interface ListEvents {
     ApplicationCommandPermissionsUpdate : [  ],
@@ -71,3 +72,6 @@ export interface ListEvents {
 export type EventsHandler =  {
     [K in keyof ListEvents]: (...args: ListEvents[K]) => unknown;
 };
+
+
+export type MessageOptions =  GatewayMessageCreateDispatchData;

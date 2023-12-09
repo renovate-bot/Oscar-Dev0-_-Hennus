@@ -1,9 +1,10 @@
 
-import { EventsHandler, HennusClientOptions } from "../../types";
 import { Client } from "@discordjs/core";
 import { REST } from "@discordjs/rest";
 import { WebSocketManager } from "@discordjs/ws";
 import { AsyncEventEmitter } from '@vladfrangu/async_event_emitter';
+import { HennusClientOptions, EventsHandler } from "..";
+
 export class HennusClientBase extends AsyncEventEmitter<EventsHandler>  {
 
     private core: Client;
@@ -26,5 +27,8 @@ export class HennusClientBase extends AsyncEventEmitter<EventsHandler>  {
 
     get destroy() {
         return this.ws.destroy({ "code": 0, reason: "Apagando la Npm de Hennus" });
+    };
+
+    async action(){
     };
 };

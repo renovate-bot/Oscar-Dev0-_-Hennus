@@ -1,5 +1,6 @@
 import { GatewayDispatchEvents, GatewayDispatchPayload } from "@discordjs/core";
-import {  ListEvents } from "../../types";
+import { ListEvents } from "../../types/ITF-Events";
+
 
 type Types = keyof ListEvents
 export class ActionBase<D extends GatewayDispatchPayload,T = D["d"], K extends D["t"] = GatewayDispatchEvents> {
@@ -83,4 +84,6 @@ export class ActionBase<D extends GatewayDispatchPayload,T = D["d"], K extends D
         return type;
         
     };
+
+    
 };
