@@ -1,16 +1,17 @@
-import { APIAttachment } from "discord-api-types/v10";
+import { RESTAPIAttachment } from '@discordjs/core';
 import { Stream } from 'node:stream';
 
-class AttachmentBuilder {
-  constructor(attachment: Buffer | string | Stream, data: AttachmentData = {}) {
+class AttachmentBuilder implements RESTAPIAttachment {
+  constructor(attachment: Buffer | string | Stream, data: RESTAPIAttachment) {
     this.attachment = attachment;
-    this.description = data.description ?? null;
-    this.name = data.name ?? null;
+    this.description = data.description;
+    this.filename = data.filename;
+    this.id = data.id;
   };
-
+  id: string | number;
   public attachment: Buffer | string | Stream;
-  public description: string | null;
-  public name: string | null;
+  description?: string | undefined;
+  filename?: string | undefined;
   private isSpoiler: boolean = false;
 
   setDescription(description: string): this {
@@ -20,29 +21,23 @@ class AttachmentBuilder {
 
   setFile(attachment: Buffer | string | Stream, name?: string): this {
     this.attachment = attachment;
-    this.name = name || null;
+    this.filename = name || undefined;
     return this;
   };
 
   setName(name: string): this {
-    this.name = name;
+    this.filename = name;
     return this;
   };
 
   setSpoiler(spoiler: boolean = true): this {
     if (this.isSpoiler === spoiler) return this;
     this.isSpoiler = spoiler;
-    this.name = spoiler ? `SPOILER_${this.name || ''}` : this.name?.replace(/^SPOILER_/, '') || null;
+    this.filename = spoiler ? `SPOILER_${this.filename || ''}` : this.filename?.replace(/^SPOILER_/, '') || undefined;
     return this;
   };
 }
 
-type AttachmentData = {
-  name?: string | undefined;
-  description?: string | undefined;
-};
-
 export {
-  AttachmentBuilder,
-  AttachmentData
+  AttachmentBuilder
 };

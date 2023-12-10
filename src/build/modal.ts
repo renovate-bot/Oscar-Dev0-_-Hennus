@@ -1,6 +1,5 @@
-import { ComponentType } from "discord-api-types/v10";
-import { ActionRowBuilder } from "./actionrow";
-import { TextInputBuilder } from "./textinput";
+import { ComponentType } from "@discordjs/core";
+import { ActionRowBuilder , TextInputBuilder} from "..";
 
 export class ModalBuilder {
     public components: Array<ActionRowBuilder>;

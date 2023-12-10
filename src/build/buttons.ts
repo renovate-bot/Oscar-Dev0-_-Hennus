@@ -1,53 +1,31 @@
-import { APIButtonComponent, ButtonStyle } from "discord-api-types/v10";
+import { APIButtonComponentWithCustomId, APIButtonComponentWithURL, ButtonStyle } from "@discordjs/core";
+import { BaseButtonBuilder } from "./BaseBuilders";
+import { _Omit } from "../types";
 
-export class ButtonsBuilder {
-    public type: number = 2;
-    public style: APIButtonComponent["style"] = 1;
-    public label?: APIButtonComponent["label"];
-    public emoji: APIButtonComponent["emoji"] = { name: undefined, id: undefined, animated: undefined };
-    public custom_id?: string;
-    public url?: string;
-
-    constructor(options?: APIButtonComponent) {
-        if (options) {
-            this.SetStyle(options.style);
-            if (options.label) this.SetLabel(options.label);
-            this.SetEmoji(options.emoji);
-            if (options.style != 5) this.SetCustomId(options.custom_id);
-            if (options.style == 5) this.SetURL(options.url);
-        }
-    }
-
-    public SetStyle(style: ButtonStyle | "Primary" | "Secondary" | "Success" | "Danger" | "Link"): this {
-        const stylesMap: { [key: string]: ButtonStyle } = {
-            "Primary": 1,
-            "Secondary": 2,
-            "Success": 3,
-            "Danger": 4,
-            "Link": 5
-        };
-
-        this.style = typeof style === "string" ? stylesMap[style] || 1 : style;
-        return this;
-    }
-
-    public SetLabel(label: string): this {
-        this.label = typeof label === "string" ? label.slice(0, 80) : undefined;
-        return this;
-    }
-
-    public SetEmoji(name: APIButtonComponent["emoji"] | string, id?: string, animated?: boolean): this {
-        this.emoji = typeof name === "object" ? name : { name, id, animated };
-        return this;
-    }
+export class ButtonsIdBuilder extends BaseButtonBuilder<APIButtonComponentWithCustomId["style"]> implements APIButtonComponentWithCustomId {
+    custom_id: string;
+    
+    constructor(options?: _Omit<APIButtonComponentWithCustomId, "type">) {
+        super(options);
+    };
 
     public SetCustomId(id: string): this {
-        this.custom_id = typeof id === "string" ? id : undefined;
+        this.custom_id = typeof id === "string" ? id : "";
         return this;
-    }
+    };
+};
 
-    public SetURL(url: string): this {
-        this.url = this.style === 5 && typeof url === "string" ? url : undefined;
+export class ButtonsUrlBuilder extends BaseButtonBuilder<APIButtonComponentWithURL["style"]> implements APIButtonComponentWithURL {
+    url: string;
+
+    constructor(options?: _Omit<APIButtonComponentWithURL, "type" | "style">) {
+        super({...options, style: ButtonStyle.Link});
+    };
+
+    setURL(url: string){
+        this.url = typeof url === "string" ? url : "";
         return this;
-    }
-}
+    };
+};
+
+export type ButtonsBuilder = ButtonsUrlBuilder | ButtonsIdBuilder

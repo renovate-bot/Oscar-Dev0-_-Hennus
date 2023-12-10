@@ -1,4 +1,7 @@
-import { MessageOptions, Client, ModelsBase } from "..";
+import { RESTPostAPIChannelMessageJSONBody } from "@discordjs/core";
+import { MessageOptions, Client, ModelsBase, MessageChannelCreate, MessageOptionsCreate, _Omit } from "..";
+import { RawFile } from '@discordjs/rest';
+import { Z_ASCII } from "zlib";
 
 export class Message extends ModelsBase<MessageOptions> {
     constructor( client: Client, data: MessageOptions){
@@ -46,9 +49,14 @@ export class Message extends ModelsBase<MessageOptions> {
         return this.data.channel_id;
     };
 
-    async reply(){
+    async reply(options: MessageChannelCreate){
         try {
-            const msg = await this.client.api.channels.createMessage(this.channelID, );
+            let data: RESTPostAPIChannelMessageJSONBody & {
+                files?: RawFile[];
+            } = {}
+            if(typeof options == "string") data["content"] = options;
+            else if(typeof options == "object") data = { ...options,  }
+            const msg = await this.client.api.channels.createMessage(this.channelID, data);
             const format = new Message(this.client, msg);
             return format;
         } catch (error) {

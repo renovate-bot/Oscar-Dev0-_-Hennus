@@ -1,8 +1,8 @@
-import { APIEmbed } from "discord-api-types/v10";
-import { colorType, resolvedColor } from "../utils";
+import { APIEmbed, EmbedType } from "@discordjs/core";
+import { colorType, resolvedColor } from "..";
 
 export class EmbedBuilder {
-  public type: string = "rich";
+  public type: APIEmbed["type"] = EmbedType.Rich;
   public title?: APIEmbed["title"];
   public description?: APIEmbed["description"];
   public url?: APIEmbed["url"];

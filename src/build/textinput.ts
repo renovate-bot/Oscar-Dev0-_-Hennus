@@ -1,36 +1,36 @@
-import { APITextInputComponent } from "discord-api-types/v10";
+import { APITextInputComponent, ComponentType, TextInputStyle } from "@discordjs/core";
 
-type TextInputStyle = "Paragraph" | "Short";
-
-export class TextInputBuilder {
-    public type: 4;
-    public custom_id?: APITextInputComponent["custom_id"];
-    public style?: APITextInputComponent["style"];
-    public label?: APITextInputComponent["label"];
-    public min_length?: APITextInputComponent["min_length"];
-    public max_length?: APITextInputComponent["max_length"];
-    public required?: APITextInputComponent["required"];
-    public value?: APITextInputComponent["value"];
-    public placeholder?: APITextInputComponent["placeholder"];
+export class TextInputBuilder  implements APITextInputComponent {
+    type: ComponentType.TextInput;
+    max_length?: number | undefined;
+    min_length?: number | undefined;
+    placeholder?: string | undefined;
+    style: TextInputStyle;
+    required?: boolean | undefined;
+    custom_id: string;
+    label: string;
+    value?: string | undefined;
 
     constructor(option?: APITextInputComponent) {
-        this.type = 4;
-        this.custom_id = option?.custom_id;
-        this.style = option?.style;
-        this.label = option?.label;
+        if (option) {
         this.min_length = option?.min_length;
         this.max_length = option?.max_length;
         this.required = option?.required;
         this.placeholder = option?.placeholder;
-    }
+        this.custom_id = option?.custom_id;
+        this.style = option?.style;
+        this.label = option?.label;
+        this.value = option?.value;
+        };
+    };
 
-    public SetCustomID(custom: APITextInputComponent["custom_id"]) {
+    public SetCustomID(custom: string) {
         this.custom_id = custom;
         return this;
     }
 
-    public SetStyle(style: APITextInputComponent["style"] | TextInputStyle) {
-        const styleMap: { [key: string]: APITextInputComponent["style"] } = {
+    public SetStyle(style: TextInputStyle | "Paragraph" | "Short") {
+        const styleMap: { [key: string]:  TextInputStyle} = {
             "Paragraph": 1,
             "Short": 2
         };
@@ -39,36 +39,36 @@ export class TextInputBuilder {
         return this;
     }
 
-    public SetLabel(label: APITextInputComponent["label"]) {
+    public SetLabel(label: string) {
         this.label = label;
         return this;
     }
 
-    public SetMinLength(value: APITextInputComponent["min_length"]) {
+    public SetMinLength(value: number) {
         if (typeof value === "number") {
             this.min_length = value;
         }
         return this;
     }
 
-    public SetMaxLength(value: APITextInputComponent["max_length"]) {
+    public SetMaxLength(value: number) {
         if (typeof value === "number") {
             this.max_length = value;
         }
         return this;
     }
 
-    public SetRequired(boolean: APITextInputComponent["required"]) {
+    public SetRequired(boolean: boolean) {
         this.required = boolean;
         return this;
     }
 
-    public SetValue(value: APITextInputComponent["value"]) {
+    public SetValue(value: string) {
         this.value = value;
         return this;
     }
 
-    public SetPlaceholder(value: APITextInputComponent["placeholder"]) {
+    public SetPlaceholder(value: string) {
         this.placeholder = value;
         return this;
     }
