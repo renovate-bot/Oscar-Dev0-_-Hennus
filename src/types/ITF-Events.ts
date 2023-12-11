@@ -1,4 +1,5 @@
 import { APIGuild, APIGuildMember, APIMessage, GatewayMessageCreateDispatchData } from "@discordjs/core";
+import { Message } from "..";
 
 export interface ListEvents {
     ApplicationCommandPermissionsUpdate : [  ],
@@ -31,7 +32,7 @@ export interface ListEvents {
     InteractionCreate : [  ],
     InviteCreate : [  ],
     InviteDelete : [  ],
-    MessageCreate : [  ],
+    MessageCreate : [ Message ],
     MessageDelete : [  ],
     MessageDeleteBulk : [  ],
     MessageReactionAdd : [  ],

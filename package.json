@@ -22,12 +22,15 @@
     "url": "https://github.com/Oscar-Dev0/Hennus/issues"
   },
   "devDependencies": {
-    "typescript": "latest",
+    "@sapphire/snowflake": "latest",
     "@types/node": "latest",
-    "@sapphire/snowflake": "latest"
+    "typescript": "latest"
   },
   "dependencies": {
-    "@discordjs/core": "latest"
+    "@discordjs/core": "latest",
+    "@discordjs/formatters": "latest",
+    "axios": "latest",
+    "tsup": "latest"
   },
   "engines": {
     "node": ">=18"
