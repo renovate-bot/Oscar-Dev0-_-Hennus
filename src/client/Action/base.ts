@@ -1,5 +1,5 @@
 import { GatewayDispatchEvents, GatewayDispatchPayload } from "@discordjs/core";
-import { Client, ListEvents } from "../..";
+import { ChannelsManager, Client, ListEvents } from "../..";
 
 
 type Types = keyof ListEvents;
@@ -10,6 +10,8 @@ export class ActionBase<D extends GatewayDispatchPayload, T = D["d"], K extends 
     public data: T;
     private _type: K;
     public client: Client;
+
+ 
 
     constructor({ t, d }: D, cleint: Client) {
         Object.defineProperty(this, "data", { value: d });

@@ -6,4 +6,5 @@ export * from "./utils";
 export * from "./build";
 
 
-export { version as Version } from "../package.json" 
+export { version as Version } from "../package.json" ;
+export * from "discord-api-types/v10";

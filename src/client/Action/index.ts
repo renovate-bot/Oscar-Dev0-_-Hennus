@@ -2,6 +2,7 @@ import { Client, ListEvents } from "../..";
 import { GatewayDispatchPayload, GatewayDispatchEvents } from "@discordjs/core";
 import { MessageCreate } from "./messageCreate";
 import { ActionBase } from "./base";
+import { ChannelEvents } from "./ChannelEvents";
 
 export class ActionEvents {
     constructor(client: Client, data: GatewayDispatchPayload) {
@@ -16,9 +17,10 @@ export class ActionEvents {
             name: keyof ListEvents,
             args: any[]
         };
-        if (data.t == GatewayDispatchEvents.MessageCreate) json = new MessageCreate(data,client).toData;
+        if (data.t == GatewayDispatchEvents.MessageCreate) json = new MessageCreate(data, client).toData;
+        else if (data.t == GatewayDispatchEvents.ChannelCreate || data.t == GatewayDispatchEvents.ChannelDelete || data.t == GatewayDispatchEvents.ChannelUpdate) json = new ChannelEvents(data, client).toData;
         else {
-            const action = new ActionBase(data,client);
+            const action = new ActionBase(data, client);
 
             //@ts-ignore
             json = action.toJSON(action.type, action.data)

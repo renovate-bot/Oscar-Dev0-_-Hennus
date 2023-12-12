@@ -1,4 +1,4 @@
-export enum Permissions {
+export enum _Permissions {
     /** @description Permite crear invitaciones instantáneas. @type (T: Texto, V: Voz, S: Servidor) */
     CREATE_INSTANT_INVITE = 0x0000000000000001,
     /** @description Permite expulsar miembros. @type (T: Texto, V: Voz, S: Servidor) */

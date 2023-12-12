@@ -14,7 +14,6 @@
         "preserveConstEnums": true,
         "removeComments": false,
         "outDir": "app",
-        "baseUrl": "src",
         "types": ["node"],
 
         /* Typing */

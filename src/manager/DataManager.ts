@@ -1,4 +1,5 @@
 import { Client, cacheManager } from "..";
+import { Collection } from "@discordjs/collection";
 
 export class DataManager<Key = any, Value = any>{
     public client: Client;
@@ -15,13 +16,21 @@ export class DataManager<Key = any, Value = any>{
     };
     
     set(key: Key, value: Value){
-        return this.cache.add(key, value);
+        this.cache.add(key, value);
+        return this;
     };
 
     resolveId(id: Key){
         const value = this.cache.get(id);
         if(value) return value;
         return undefined;
+    };
+
+    setCache(Iterable?: Iterable<readonly [Key, Value]>){
+        const collection = new Collection<Key, Value>(Iterable);
+        const fusion = this.cache.concat(collection);
+        Object.defineProperty(this, "_cache", { value: fusion });
+        return this;
     };
 
 };

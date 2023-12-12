@@ -1,4 +1,4 @@
-import { Channel, Client, DataManager } from "..";
+import { Channel, ChannelResolved, Client, DataManager } from "..";
 
 export class ChannelsManager extends DataManager<string, Channel> {
     public constructor(client: Client, map?: Channel[]) {
@@ -10,7 +10,8 @@ export class ChannelsManager extends DataManager<string, Channel> {
         const existing = this.resolveId(id);
         if (existing && !force) return existing;
         const data = await this.client.api.channels.get(id);
-        if(data.type)
-
-    }
+        const channel = ChannelResolved(this.client,data);
+        if(channel) this.set(channel.id, channel);
+        return channel;
+    };
 };
