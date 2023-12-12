@@ -10,6 +10,8 @@ export class MessageCreate extends ActionBase<GatewayMessageCreateDispatch> {
     public get toData() {
         const msg = new Message(this.client, this.data);
 
+        
+
         return super.toJSON(this.type, msg);
     };
 

@@ -9,7 +9,7 @@ export class MessageCreate extends ActionBase<GatewayMessageDeleteDispatch> {
 
     public get toData() {
         const channel = this.client.channels.cache.get(this.data.channel_id);
-
+        const guild = 
         let msg: Message | undefined;
         if(channel?.isTextBased()) msg = channel.messages.resolveId(this.data.id);
 

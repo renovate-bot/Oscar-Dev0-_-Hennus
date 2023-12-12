@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Client } from "../client";
 
-export class ModelsBase<T extends any> {
+export class ModelsBase<T = any> {
     public data: T;
     public client: Client;
     constructor(_d: T, _c: Client) {
