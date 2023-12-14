@@ -18,11 +18,15 @@ export class EmbedBuilder {
     this.title = options?.title;
     this.description = options?.description;
     this.url = options?.url;
-    this.timestamp = options?.timestamp ?? undefined
+    this.timestamp = options?.timestamp ?? undefined;
     this.color = resolvedColor(options?.color ?? "Default");
     this.footer = options?.footer;
-    this.image = typeof options?.image === "string" ? { url: options?.image } : options?.image;
-    this.thumbnail = typeof options?.thumbnail === "string" ? { url: options?.thumbnail } : options?.thumbnail;
+    this.image = typeof options?.image === "string"
+      ? { url: options?.image }
+      : options?.image;
+    this.thumbnail = typeof options?.thumbnail === "string"
+      ? { url: options?.thumbnail }
+      : options?.thumbnail;
     this.author = options?.author;
     this.save(options?.fields);
   }

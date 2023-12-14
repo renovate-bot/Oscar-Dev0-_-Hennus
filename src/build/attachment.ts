@@ -1,5 +1,5 @@
-import { RESTAPIAttachment } from '@discordjs/core';
-import { Stream } from 'node:stream';
+import { RESTAPIAttachment } from "@discordjs/core";
+import { Stream } from "node:stream";
 
 class AttachmentBuilder implements RESTAPIAttachment {
   constructor(attachment: Buffer | string | Stream, data: RESTAPIAttachment) {
@@ -7,7 +7,7 @@ class AttachmentBuilder implements RESTAPIAttachment {
     this.description = data.description;
     this.filename = data.filename;
     this.id = data.id;
-  };
+  }
   id: string | number;
   public attachment: Buffer | string | Stream;
   description?: string | undefined;
@@ -17,27 +17,27 @@ class AttachmentBuilder implements RESTAPIAttachment {
   setDescription(description: string): this {
     this.description = description;
     return this;
-  };
+  }
 
   setFile(attachment: Buffer | string | Stream, name?: string): this {
     this.attachment = attachment;
     this.filename = name || undefined;
     return this;
-  };
+  }
 
   setName(name: string): this {
     this.filename = name;
     return this;
-  };
+  }
 
   setSpoiler(spoiler: boolean = true): this {
     if (this.isSpoiler === spoiler) return this;
     this.isSpoiler = spoiler;
-    this.filename = spoiler ? `SPOILER_${this.filename || ''}` : this.filename?.replace(/^SPOILER_/, '') || undefined;
+    this.filename = spoiler
+      ? `SPOILER_${this.filename || ""}`
+      : this.filename?.replace(/^SPOILER_/, "") || undefined;
     return this;
-  };
+  }
 }
 
-export {
-  AttachmentBuilder
-};
+export { AttachmentBuilder };

@@ -1,31 +1,39 @@
-import { APIButtonComponentWithCustomId, APIButtonComponentWithURL, ButtonStyle } from "@discordjs/core";
+import {
+  APIButtonComponentWithCustomId,
+  APIButtonComponentWithURL,
+  ButtonStyle,
+} from "@discordjs/core";
 import { BaseButtonBuilder } from "./BaseBuilders";
 import { _Omit } from "../types";
 
-export class ButtonsIdBuilder extends BaseButtonBuilder<APIButtonComponentWithCustomId["style"]> implements APIButtonComponentWithCustomId {
-    custom_id: string;
-    
-    constructor(options?: _Omit<APIButtonComponentWithCustomId, "type">) {
-        super(options);
-    };
+export class ButtonsIdBuilder
+  extends BaseButtonBuilder<APIButtonComponentWithCustomId["style"]>
+  implements APIButtonComponentWithCustomId {
+  custom_id: string;
 
-    public SetCustomId(id: string): this {
-        this.custom_id = typeof id === "string" ? id : "";
-        return this;
-    };
-};
+  constructor(options?: _Omit<APIButtonComponentWithCustomId, "type">) {
+    super(options);
+  }
 
-export class ButtonsUrlBuilder extends BaseButtonBuilder<APIButtonComponentWithURL["style"]> implements APIButtonComponentWithURL {
-    url: string;
+  public SetCustomId(id: string): this {
+    this.custom_id = typeof id === "string" ? id : "";
+    return this;
+  }
+}
 
-    constructor(options?: _Omit<APIButtonComponentWithURL, "type" | "style">) {
-        super({...options, style: ButtonStyle.Link});
-    };
+export class ButtonsUrlBuilder
+  extends BaseButtonBuilder<APIButtonComponentWithURL["style"]>
+  implements APIButtonComponentWithURL {
+  url: string;
 
-    setURL(url: string){
-        this.url = typeof url === "string" ? url : "";
-        return this;
-    };
-};
+  constructor(options?: _Omit<APIButtonComponentWithURL, "type" | "style">) {
+    super({ ...options, style: ButtonStyle.Link });
+  }
 
-export type ButtonsBuilder = ButtonsUrlBuilder | ButtonsIdBuilder
+  setURL(url: string) {
+    this.url = typeof url === "string" ? url : "";
+    return this;
+  }
+}
+
+export type ButtonsBuilder = ButtonsUrlBuilder | ButtonsIdBuilder;
