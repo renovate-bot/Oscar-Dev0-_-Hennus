@@ -25,7 +25,7 @@ export class ModelsBase<T = any> {
         "image/webp",
       ]
       const url = await axios(_url, { responseType: "arraybuffer" })
-      let type = url.headers["content-type"] || url.headers["Content-Type"]
+      const type = url.headers["content-type"] || url.headers["Content-Type"]
 
       if (url.status == 200 && header.includes(type)) {
         let _type

@@ -1,5 +1,5 @@
 import { ChannelFlags } from "@discordjs/core"
-import { _Permissions, BitField, EnumLike } from ".."
+import { _Permissions, BitField } from ".."
 
 export class ChannelBitField extends BitField<ChannelFlags> {
   static Flags = ChannelFlags

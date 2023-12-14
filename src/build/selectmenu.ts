@@ -1,14 +1,7 @@
 import {
-  APIBaseAutoPopulatedSelectMenuComponent,
-  APIBaseSelectMenuComponent,
-  APIChannelSelectComponent,
-  APIMentionableSelectComponent,
-  APIRoleSelectComponent,
   APISelectMenuOption,
   APIStringSelectComponent,
-  APIUserSelectComponent,
   ComponentType,
-  SelectMenuDefaultValueType,
 } from "@discordjs/core"
 import { _Omit, BaseSelectMenuBuilder } from ".."
 

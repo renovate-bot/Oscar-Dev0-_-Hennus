@@ -1,5 +1,4 @@
 import {
-  APIAllowedMentions,
   RESTPatchAPIChannelMessageJSONBody,
   RESTPostAPIChannelMessageJSONBody,
 } from "@discordjs/core"

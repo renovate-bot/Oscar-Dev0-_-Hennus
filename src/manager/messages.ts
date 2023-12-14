@@ -1,6 +1,5 @@
 import { RESTGetAPIChannelMessagesQuery } from "@discordjs/core"
 import { Client, DataManager, Message } from ".."
-import { Collection } from "@discordjs/collection"
 
 export class MessagesManager extends DataManager<string, Message> {
   constructor(client: Client, map?: Message[]) {

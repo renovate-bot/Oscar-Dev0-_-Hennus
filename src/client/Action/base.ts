@@ -1,5 +1,5 @@
 import { GatewayDispatchEvents, GatewayDispatchPayload } from "@discordjs/core"
-import { ChannelsManager, Client, ListEvents } from "../.."
+import { Client, ListEvents } from "../.."
 
 type Types = keyof ListEvents
 

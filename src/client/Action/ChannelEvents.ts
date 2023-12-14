@@ -1,4 +1,4 @@
-import { ChannelResolved, Client, Message } from "../.."
+import { ChannelResolved, Client } from "../.."
 import { ActionBase } from "./base"
 import { GatewayChannelCreateDispatch } from "@discordjs/core"
 

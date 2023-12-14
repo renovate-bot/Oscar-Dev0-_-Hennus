@@ -1,4 +1,4 @@
-import { Client, GatewayDispatchPayload } from "@discordjs/core"
+import { Client } from "@discordjs/core"
 import { REST } from "@discordjs/rest"
 import { WebSocketManager } from "@discordjs/ws"
 import { AsyncEventEmitter } from "@vladfrangu/async_event_emitter"

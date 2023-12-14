@@ -13,6 +13,10 @@
     "typescript",
     "botdev"
   ],
+  "scripts": {
+    "lint": "deno lint --rules-exclude=ban-ts-comment,no-inferrable-types,no-explicit-any",
+    "fmt": "deno fmt && deno fmt --no-semicolons "
+  },
   "homepage": "https://github.com/Oscar-Dev0/Hennus",
   "repository": {
     "type": "git",
@@ -24,6 +28,7 @@
   "devDependencies": {
     "@sapphire/snowflake": "latest",
     "@types/node": "latest",
+    "deno": "latest",
     "typescript": "latest"
   },
   "dependencies": {

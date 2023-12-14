@@ -1,15 +1,5 @@
-import {
-  APINewsChannel,
-  APITextChannel,
-  RESTPostAPIChannelMessageJSONBody,
-} from "@discordjs/core"
-import {
-  BaseGuildChannel,
-  Client,
-  Message,
-  MessageChannelCreate,
-  MessagesManager,
-} from ".."
+import { APINewsChannel, APITextChannel } from "@discordjs/core"
+import { BaseGuildChannel, Client, MessagesManager } from ".."
 
 export class GuildTextChannel
   extends BaseGuildChannel<APITextChannel | APINewsChannel> {
