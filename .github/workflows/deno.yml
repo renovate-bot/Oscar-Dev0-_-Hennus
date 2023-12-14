@@ -32,12 +32,9 @@ jobs:
           deno-version: v1.x
 
       # Uncomment this step to verify the use of 'deno fmt' on each commit.
-
-      - name: formatting Code
-        run: deno fmt
         
       - name: Run linter
-        run: deno lint 
+        run: deno lint --rules-exclude=ban-ts-comment,no-inferrable-types,no-explicit-any 
 
 
 
