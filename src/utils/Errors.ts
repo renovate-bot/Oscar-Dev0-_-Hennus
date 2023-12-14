@@ -1,7 +1,7 @@
 export class HennusError extends Error {
   constructor(message: errorCodes | string) {
-    super(message);
-    this.name = "HennusError";
+    super(message)
+    this.name = "HennusError"
   }
 }
 

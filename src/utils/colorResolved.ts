@@ -1,27 +1,27 @@
-import { errorCodes, HennusError } from "..";
+import { errorCodes, HennusError } from ".."
 
 export function resolvedColor(color: colorType): number {
   if (typeof color === "string") {
-    if (color === "Random") return Math.floor(Math.random() * (0xffffff + 1));
-    if (color === "Default") return 0;
+    if (color === "Random") return Math.floor(Math.random() * (0xffffff + 1))
+    if (color === "Default") return 0
 
     if (/^#?[\da-f]{6}$/i.test(color)) {
-      return parseInt(color.replace("#", ""), 16);
+      return parseInt(color.replace("#", ""), 16)
     }
 
-    const enumColorValue = Colors[color as StringColor];
-    if (enumColorValue !== undefined) color = enumColorValue;
-    else throw new HennusError(errorCodes.ColorRange);
+    const enumColorValue = Colors[color as StringColor]
+    if (enumColorValue !== undefined) color = enumColorValue
+    else throw new HennusError(errorCodes.ColorRange)
   } else if (Array.isArray(color)) {
-    color = (color[0] << 16) + (color[1] << 8) + color[2];
+    color = (color[0] << 16) + (color[1] << 8) + color[2]
   }
 
   if (
     typeof color !== "number" || Number.isNaN(color) || color < 0 ||
     color > 0xffffff
-  ) throw new HennusError(errorCodes.ColorRange);
+  ) throw new HennusError(errorCodes.ColorRange)
 
-  return color;
+  return color
 }
 
 export type colorType =
@@ -30,9 +30,9 @@ export type colorType =
   | StringColor
   | "Random"
   | Colors
-  | [number, number, number];
+  | [number, number, number]
 
-type StringColor = keyof typeof Colors;
+type StringColor = keyof typeof Colors
 
 export enum Colors {
   Default = 0x000000,

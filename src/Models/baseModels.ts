@@ -1,20 +1,20 @@
-import axios from "axios";
-import { Client } from "../client";
+import axios from "axios"
+import { Client } from "../client"
 
 export class ModelsBase<T = any> {
-  public data: T;
-  public client: Client;
+  public data: T
+  public client: Client
   constructor(_d: T, _c: Client) {
-    Object.defineProperty(this, "data", { value: _d });
-    Object.defineProperty(this, "client", { value: _c });
+    Object.defineProperty(this, "data", { value: _d })
+    Object.defineProperty(this, "client", { value: _c })
   }
 
   public toJSON() {
-    return this.data;
+    return this.data
   }
 
   async imagen(_url?: string) {
-    if (!_url) return undefined;
+    if (!_url) return undefined
     try {
       const header = [
         "image/jpeg",
@@ -23,18 +23,18 @@ export class ModelsBase<T = any> {
         "image/x-icon",
         "imagen/webp",
         "image/webp",
-      ];
-      const url = await axios(_url, { responseType: "arraybuffer" });
-      let type = url.headers["content-type"] || url.headers["Content-Type"];
+      ]
+      const url = await axios(_url, { responseType: "arraybuffer" })
+      let type = url.headers["content-type"] || url.headers["Content-Type"]
 
       if (url.status == 200 && header.includes(type)) {
-        let _type;
-        if (type === "image/jpeg") _type = "jpeg";
-        else if (type === "image/gif") _type = "gif";
-        else if (type === "image/png") _type = "png";
-        else if (type === "image/x-icon") _type = "ico";
+        let _type
+        if (type === "image/jpeg") _type = "jpeg"
+        else if (type === "image/gif") _type = "gif"
+        else if (type === "image/png") _type = "png"
+        else if (type === "image/x-icon") _type = "ico"
         else if (type === "image/webp" || type === "imagen/webp") {
-          _type = "webp";
+          _type = "webp"
         }
 
         return {
@@ -42,11 +42,11 @@ export class ModelsBase<T = any> {
           url: _url,
           type: _type as "jpeg" | "gif" | "png" | "ico" | "webp",
           content_type: type,
-        };
+        }
       }
-      return undefined;
+      return undefined
     } catch {
-      return undefined;
+      return undefined
     }
   }
 }

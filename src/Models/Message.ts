@@ -2,31 +2,31 @@ import {
   APIAllowedMentions,
   RESTPatchAPIChannelMessageJSONBody,
   RESTPostAPIChannelMessageJSONBody,
-} from "@discordjs/core";
+} from "@discordjs/core"
 import {
   _Omit,
   Client,
   MessageChannelCreate,
   MessageOptions,
   ModelsBase,
-} from "..";
-import { RawFile } from "@discordjs/rest";
+} from ".."
+import { RawFile } from "@discordjs/rest"
 
 export class Message extends ModelsBase<MessageOptions> {
   constructor(client: Client, data: MessageOptions) {
-    super(data, client);
+    super(data, client)
   }
 
   get id() {
-    return this.data.id;
+    return this.data.id
   }
 
   get type() {
-    return this.data.type;
+    return this.data.type
   }
 
   get content() {
-    return this.data.content;
+    return this.data.content
   }
 
   get mention() {
@@ -35,58 +35,58 @@ export class Message extends ModelsBase<MessageOptions> {
       everyone: this.data.mention_everyone,
       channels: this.data.mention_channels,
       roles: this.data.mention_roles,
-    };
+    }
   }
 
   get member(): MessageOptions["member"] {
-    return this.data?.member;
+    return this.data?.member
   }
 
   get user() {
-    return this.data.author;
+    return this.data.author
   }
 
   get flags() {
-    return this.data.flags;
+    return this.data.flags
   }
 
   get guildID(): MessageOptions["guild_id"] {
-    return this.data?.guild_id;
+    return this.data?.guild_id
   }
 
   get channelID() {
-    return this.data.channel_id;
+    return this.data.channel_id
   }
 
   async reply(options: MessageChannelCreate) {
     try {
       let data: RESTPostAPIChannelMessageJSONBody & {
-        files?: RawFile[];
-      } = {};
-      if (typeof options == "string") data["content"] = options;
+        files?: RawFile[]
+      } = {}
+      if (typeof options == "string") data["content"] = options
       else if (typeof options == "object") {
-        data = { ...options };
+        data = { ...options }
         if (options.attachments && Array.isArray(options.attachments)) {
-          data.files = [];
+          data.files = []
 
-          const from: RawFile[] = [];
+          const from: RawFile[] = []
           for (let i = 0; i < options.attachments.length; i++) {
-            const attach = options.attachments[i];
-            let contentType = "";
+            const attach = options.attachments[i]
+            let contentType = ""
 
-            let _buffer: Buffer | string | undefined = undefined;
-            let name: string = `default${i}.txt`;
+            let _buffer: Buffer | string | undefined = undefined
+            let name: string = `default${i}.txt`
             if (typeof attach.attachment == "string") {
-              const imagen = await this.imagen(attach.attachment);
+              const imagen = await this.imagen(attach.attachment)
               if (imagen) {
-                const buffer = Buffer.from(imagen.data, "binary");
-                _buffer = buffer;
-                name = attach.filename ?? `default.${imagen.type}`;
-                contentType = imagen.content_type;
+                const buffer = Buffer.from(imagen.data, "binary")
+                _buffer = buffer
+                name = attach.filename ?? `default.${imagen.type}`
+                contentType = imagen.content_type
               }
             } else {
-              _buffer = attach.attachment as Buffer;
-              name = attach.filename ?? `default${i}.txt`;
+              _buffer = attach.attachment as Buffer
+              name = attach.filename ?? `default${i}.txt`
             }
 
             if (_buffer) {
@@ -94,20 +94,20 @@ export class Message extends ModelsBase<MessageOptions> {
                 data: _buffer,
                 name,
                 contentType,
-              });
+              })
             }
           }
-          data.files = from;
+          data.files = from
         }
       }
       const msg = await this.client.api.channels.createMessage(
         this.channelID,
         data,
-      );
-      const format = new Message(this.client, msg);
-      return format;
+      )
+      const format = new Message(this.client, msg)
+      return format
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 
@@ -115,42 +115,42 @@ export class Message extends ModelsBase<MessageOptions> {
     try {
       await this.client.api.channels.deleteMessage(this.channelID, this.id, {
         reason,
-      });
-      return this;
+      })
+      return this
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 
   async edit(options: MessageChannelCreate) {
     try {
       let data: RESTPatchAPIChannelMessageJSONBody & {
-        files?: RawFile[];
-      } = {};
-      if (typeof options == "string") data["content"] = options;
+        files?: RawFile[]
+      } = {}
+      if (typeof options == "string") data["content"] = options
       else if (typeof options == "object") {
-        data = { ...options };
+        data = { ...options }
         if (options.attachments && Array.isArray(options.attachments)) {
-          data.files = [];
+          data.files = []
 
-          const from: RawFile[] = [];
+          const from: RawFile[] = []
           for (let i = 0; i < options.attachments.length; i++) {
-            const attach = options.attachments[i];
-            let contentType = "";
+            const attach = options.attachments[i]
+            let contentType = ""
 
-            let _buffer: Buffer | string | undefined = undefined;
-            let name: string = `default${i}.txt`;
+            let _buffer: Buffer | string | undefined = undefined
+            let name: string = `default${i}.txt`
             if (typeof attach.attachment == "string") {
-              const imagen = await this.imagen(attach.attachment);
+              const imagen = await this.imagen(attach.attachment)
               if (imagen) {
-                const buffer = Buffer.from(imagen.data, "binary");
-                _buffer = buffer;
-                name = attach.filename ?? `default.${imagen.type}`;
-                contentType = imagen.content_type;
+                const buffer = Buffer.from(imagen.data, "binary")
+                _buffer = buffer
+                name = attach.filename ?? `default.${imagen.type}`
+                contentType = imagen.content_type
               }
             } else {
-              _buffer = attach.attachment as Buffer;
-              name = attach.filename ?? `default${i}.txt`;
+              _buffer = attach.attachment as Buffer
+              name = attach.filename ?? `default${i}.txt`
             }
 
             if (_buffer) {
@@ -158,40 +158,40 @@ export class Message extends ModelsBase<MessageOptions> {
                 data: _buffer,
                 name,
                 contentType,
-              });
+              })
             }
           }
-          data.files = from;
+          data.files = from
         }
       }
       const msg = await this.client.api.channels.editMessage(
         this.channelID,
         this.id,
         data,
-      );
-      const format = new Message(this.client, msg);
-      return format;
+      )
+      const format = new Message(this.client, msg)
+      return format
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 
   get isPinned() {
-    return this.data.pinned;
+    return this.data.pinned
   }
 
   async pin(reason?: string) {
     try {
       await this.client.api.channels.pinMessage(this.channelID, this.id, {
         reason,
-      });
-      return this;
+      })
+      return this
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 
   toString() {
-    return this.id;
+    return this.id
   }
 }

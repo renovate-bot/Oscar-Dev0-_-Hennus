@@ -1,7 +1,7 @@
-export * from "./Message";
+export * from "./Message"
 
-export * from "./baseModels";
-export * from "./baseChannel";
+export * from "./baseModels"
+export * from "./baseChannel"
 
 import {
   APIGuildCategoryChannel,
@@ -10,11 +10,11 @@ import {
   APIGuildStageVoiceChannel,
   APIGuildVoiceChannel,
   APIThreadChannel,
-} from "@discordjs/core";
-import { DMChannel, GroupDMChannel } from "./Dmchannel";
-import { BaseGuildChannel } from "./baseChannel";
-import { GuildTextChannel } from "./GuildChannel";
-import { _Omit } from "..";
+} from "@discordjs/core"
+import { DMChannel, GroupDMChannel } from "./Dmchannel"
+import { BaseGuildChannel } from "./baseChannel"
+import { GuildTextChannel } from "./GuildChannel"
+import { _Omit } from ".."
 
 export type Channel =
   | DMChannel
@@ -27,6 +27,6 @@ export type Channel =
     | APIThreadChannel
     | APIGuildForumChannel
     | APIGuildMediaChannel
-  >;
+  >
 
-export { BaseGuildChannel, DMChannel, GroupDMChannel, GuildTextChannel };
+export { BaseGuildChannel, DMChannel, GroupDMChannel, GuildTextChannel }
