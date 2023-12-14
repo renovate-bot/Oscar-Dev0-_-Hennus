@@ -33,12 +33,13 @@ jobs:
 
       # Uncomment this step to verify the use of 'deno fmt' on each commit.
 
-
+      - name: formatting Code
+        run: deno fmt
+        
       - name: Run linter
         run: deno lint 
 
-      - name: formatting Code
-        run: deno fmt
+
 
       - name: Run tests
         run: deno test -A
