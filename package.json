@@ -1,5 +1,5 @@
 {
-  "name": "hennus",
+  "name": "@hennus/test",
   "version": "0.0.1-Test",
   "description": "Una npm para discord ",
   "main": "index.js",
