@@ -7,9 +7,7 @@ import { DiscordSnowflake } from "@sapphire/snowflake"
 import { ModelsBase } from "./baseModels"
 import { MessageChannelCreate, MessageOptions } from "../types"
 
-
 export class Message extends ModelsBase<MessageOptions> {
-
   get id() {
     return this.data.id
   }
@@ -63,9 +61,9 @@ export class Message extends ModelsBase<MessageOptions> {
     return this.data.pinned
   }
 
-  get channel(){
-    return this.client.channels.resolveId(this.channelID);
-  };
+  get channel() {
+    return this.client.channels.resolveId(this.channelID)
+  }
 
   async reply(options: MessageChannelCreate) {
     try {

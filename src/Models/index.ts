@@ -2,9 +2,9 @@ export * from "./Message"
 
 export * from "./baseModels"
 export * from "./baseChannel"
-export * from "./ClientUser";
-export * from "./user";
-export * from "./Guild";
+export * from "./ClientUser"
+export * from "./user"
+export * from "./Guild"
 
 // ChannelType
 import {
@@ -18,7 +18,7 @@ import {
 import { DMChannel, GroupDMChannel } from "./Dmchannel"
 import { BaseGuildChannel } from "./baseChannel"
 import { GuildTextChannel } from "./GuildChannel"
-import { _Omit } from "../types";
+import { _Omit } from "../types"
 
 export type Channel =
   | DMChannel

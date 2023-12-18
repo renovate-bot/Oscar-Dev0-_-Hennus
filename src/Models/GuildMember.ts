@@ -1,8 +1,5 @@
-import { APIGuildMember } from "@discordjs/core";
-import { ModelsBase } from "./baseModels";
+import { APIGuildMember } from "@discordjs/core"
+import { ModelsBase } from "./baseModels"
 
-export class GuildMember extends ModelsBase<APIGuildMember>{
-    
-
-    
+export class GuildMember extends ModelsBase<APIGuildMember> {
 }

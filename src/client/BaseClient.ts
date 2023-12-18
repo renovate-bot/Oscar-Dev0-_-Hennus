@@ -9,7 +9,7 @@ export class HennusClientBase extends AsyncEventEmitter<ListEvents> {
   private core: Client
   private ws: WebSocketManager
   private rest: REST
-  public user: ClientUser;
+  public user: ClientUser
 
   constructor(clientOptions: HennusClientOptions) {
     super()
@@ -34,9 +34,10 @@ export class HennusClientBase extends AsyncEventEmitter<ListEvents> {
   get destroy() {
     return this.ws.destroy({ "code": 0, reason: "Apagando la Npm de Hennus" })
   }
-  
 
-  private _patch(data: any){
-    if("user" in data) Object.defineProperty(this, "user", { value: data.user })
+  private _patch(data: any) {
+    if ("user" in data) {
+      Object.defineProperty(this, "user", { value: data.user })
+    }
   }
 }

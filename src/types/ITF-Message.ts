@@ -5,7 +5,6 @@ import {
 import { _Omit } from "./Util"
 import { ActionRowBuilder, AttachmentBuilder, EmbedBuilder } from "../build"
 
-
 type OmitMessage =
   & _Omit<
     RESTPostAPIChannelMessageJSONBody,

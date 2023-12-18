@@ -9,7 +9,13 @@ import {
   ChannelType,
 } from "@discordjs/core"
 import { Client } from "../client"
-import { BaseGuildChannel, Channel, DMChannel, GroupDMChannel, GuildTextChannel } from "../Models"
+import {
+  BaseGuildChannel,
+  Channel,
+  DMChannel,
+  GroupDMChannel,
+  GuildTextChannel,
+} from "../Models"
 export * from "./colorResolved"
 export * from "./EmojiResolved"
 export * from "./Errors"

@@ -23,7 +23,7 @@ export class DataManager<Key = any, Value = any> {
 
   resolveId(id: Key) {
     return this.cache.get(id)
-  };
+  }
 
   setCache(Iterable?: Iterable<readonly [Key, Value]>) {
     const collection = new Collection<Key, Value>(Iterable)

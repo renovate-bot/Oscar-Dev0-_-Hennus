@@ -7,8 +7,8 @@ import { GuildsManager } from "../manager"
 
 export class Client extends HennusClientBase {
   //Collections
-  public channels = new ChannelsManager(this);
-  public guilds = new GuildsManager(this);
+  public channels = new ChannelsManager(this)
+  public guilds = new GuildsManager(this)
 
   async login() {
     try {

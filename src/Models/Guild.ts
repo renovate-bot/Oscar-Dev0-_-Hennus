@@ -1,4 +1,11 @@
-import { APIGuild, CDNRoutes, GatewayGuildCreateDispatchData, GuildBannerFormat, GuildIconFormat, ImageFormat } from "@discordjs/core"
+import {
+  APIGuild,
+  CDNRoutes,
+  GatewayGuildCreateDispatchData,
+  GuildBannerFormat,
+  GuildIconFormat,
+  ImageFormat,
+} from "@discordjs/core"
 import { ModelsBase } from "./baseModels"
 import { DiscordSnowflake } from "@sapphire/snowflake"
 import { ChannelsManager } from "../manager"
@@ -6,9 +13,8 @@ import { ChannelResolved } from "../utils"
 
 export class Guild
   extends ModelsBase<GatewayGuildCreateDispatchData | APIGuild> {
-
-  private one = { channel: false };
-  private _channels = new ChannelsManager(this.client);
+  private one = { channel: false }
+  private _channels = new ChannelsManager(this.client)
 
   get id() {
     return this.data.id
@@ -53,28 +59,35 @@ export class Guild
 
   bannerURL(options?: GuildBannerFormat) {
     if (!this.banner) return undefined
-    return CDNRoutes.guildBanner(this.id, this.banner, options ?? ImageFormat.PNG)
+    return CDNRoutes.guildBanner(
+      this.id,
+      this.banner,
+      options ?? ImageFormat.PNG,
+    )
   }
 
   private get isValidated() {
-    return "members" in this.data;
+    return "members" in this.data
   }
 
   get channels() {
-    if (!this.isValidated) return this._channels;
+    if (!this.isValidated) return this._channels
     else {
-     
-      if (this.one.channel) return this._channels;
+      if (this.one.channel) return this._channels
 
       const data = this.data as GatewayGuildCreateDispatchData
-      const map = data.channels.concat(data.threads).map((x) => ChannelResolved(this.client, x))
+      const map = data.channels.concat(data.threads).map((x) =>
+        ChannelResolved(this.client, x)
+      )
 
       if (!this.one.channel) {
-        Object.defineProperty(this, "_channels", { value: new ChannelsManager(this.client, map) })
-        this.one.channel = true;
+        Object.defineProperty(this, "_channels", {
+          value: new ChannelsManager(this.client, map),
+        })
+        this.one.channel = true
       }
 
-      return this._channels;
+      return this._channels
     }
   }
 

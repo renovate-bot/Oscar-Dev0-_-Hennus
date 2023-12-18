@@ -4,7 +4,6 @@ import { ChannelResolved } from "../utils"
 import { Channel } from "../Models"
 import { RESTPostAPIGuildChannelJSONBody } from "@discordjs/core"
 
-
 export class ChannelsManager extends DataManager<string, Channel> {
   public constructor(client: Client, map?: Channel[]) {
     const _map: Iterable<readonly [string, Channel]> | undefined = map?.map((

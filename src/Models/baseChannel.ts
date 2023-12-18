@@ -24,7 +24,6 @@ import { MessageChannelCreate } from "../types"
 import { Message } from "./Message"
 
 export class BaseChannel<T extends APIChannel> extends ModelsBase<T> {
-  
   get id() {
     return this.data.id
   }

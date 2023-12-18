@@ -1,5 +1,4 @@
-import { HennusError, errorCodes } from "./Errors"
-
+import { errorCodes, HennusError } from "./Errors"
 
 export function resolvedColor(color: colorType): number {
   if (typeof color === "string") {

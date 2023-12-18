@@ -5,7 +5,6 @@ import { Client } from "../client"
 export class DMChannel<
   T extends APIGroupDMChannel | APIDMChannel = APIDMChannel,
 > extends BaseChannel<T> {
-
   get recipients() {
     return this.data.recipients
   }
@@ -24,8 +23,6 @@ export class DMChannel<
 }
 
 export class GroupDMChannel extends DMChannel<APIGroupDMChannel> {
-
-
   get ownerId() {
     return this.data.owner_id
   }
