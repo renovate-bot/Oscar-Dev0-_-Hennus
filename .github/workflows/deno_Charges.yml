@@ -28,4 +28,9 @@ jobs:
           deno-version: v1.x
 
       # Uncomment this step to verify the use of 'deno fmt' on each commit.
-  
+      - name: Deno Charge
+        run: deno fmt && deno fmt --no-semicolons
+        
+      - name: Git run
+        run: git 
+      
