@@ -16,8 +16,13 @@
   "scripts": {
     "lint": "deno lint --rules-exclude=ban-ts-comment,no-inferrable-types,no-explicit-any",
     "fmt": "deno fmt && deno fmt --no-semicolons",
-    "tsup": "tsup",
-    "tsc": "tsc --declaration"
+    "build#Npm": "npm run build#clean && npm publish",
+    "build#test": "npm run build#clean-old && tsc --declaration",
+    "test": "node Tests",
+    "build#clean-old": "rimraf -rf app && npm run build#clean-old-type",
+    "build#clean-old-type": "rimraf -rf typescript",
+    "build#clean": "npm run build#clean-old && tsup && tsc && npm run clean#build",
+    "clean#build": "rimraf typescript/index.js"
   },
   "homepage": "https://github.com/Oscar-Dev0/Hennus",
   "repository": {
@@ -31,7 +36,8 @@
     "@sapphire/snowflake": "latest",
     "@types/node": "latest",
     "deno": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "rimraf": "latest"
   },
   "dependencies": {
     "@discordjs/core": "latest",

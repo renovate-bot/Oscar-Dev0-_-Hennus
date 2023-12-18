@@ -6,5 +6,5 @@ export default defineConfig({
   entry: ["src/index.ts"],
   minify: false,
   sourcemap: false,
-  outDir: "app",
+  outDir: "typescript",
 })
