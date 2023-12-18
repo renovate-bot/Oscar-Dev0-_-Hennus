@@ -1,13 +1,14 @@
-import { APIGuild, GatewayGuildCreateDispatchData } from "@discordjs/core"
+import { APIGuild, CDNRoutes, GatewayGuildCreateDispatchData, GuildBannerFormat, GuildIconFormat, ImageFormat } from "@discordjs/core"
 import { ModelsBase } from "./baseModels"
-import { ChannelResolved, ChannelsManager, Client } from ".."
 import { DiscordSnowflake } from "@sapphire/snowflake"
-import { ImageURLOptions } from "@discordjs/rest"
+import { ChannelsManager } from "../manager"
+import { ChannelResolved } from "../utils"
+
 export class Guild
   extends ModelsBase<GatewayGuildCreateDispatchData | APIGuild> {
-  constructor(client: Client, data: APIGuild | GatewayGuildCreateDispatchData) {
-    super(data, client)
-  }
+
+  private one = { channel: false };
+  private _channels = new ChannelsManager(this.client);
 
   get id() {
     return this.data.id
@@ -45,28 +46,35 @@ export class Guild
     return new Date(this.createdTimestamp)
   }
 
-  iconURL(options?: ImageURLOptions) {
+  iconURL(options?: GuildIconFormat) {
     if (!this.icon) return undefined
-    //@ts-ignore
-    return this.client.rest.cdn.icon(this.id, this.icon, options)
+    return CDNRoutes.guildIcon(this.id, this.icon, options ?? ImageFormat.PNG)
   }
 
-  bannerURL(options?: ImageURLOptions) {
+  bannerURL(options?: GuildBannerFormat) {
     if (!this.banner) return undefined
-    //@ts-ignore
-    return this.client.rest.cdn.banner(this.id, this.banner, options)
+    return CDNRoutes.guildBanner(this.id, this.banner, options ?? ImageFormat.PNG)
   }
 
   private get isValidated() {
-    return "members" in this.data
+    return "members" in this.data;
   }
 
   get channels() {
-    if (!this.isValidated) return new ChannelsManager(this.client)
+    if (!this.isValidated) return this._channels;
     else {
+     
+      if (this.one.channel) return this._channels;
+
       const data = this.data as GatewayGuildCreateDispatchData
-      const map = data.channels.map((x) => ChannelResolved(this.client, x))
-      return new ChannelsManager(this.client, map)
+      const map = data.channels.concat(data.threads).map((x) => ChannelResolved(this.client, x))
+
+      if (!this.one.channel) {
+        Object.defineProperty(this, "_channels", { value: new ChannelsManager(this.client, map) })
+        this.one.channel = true;
+      }
+
+      return this._channels;
     }
   }
 

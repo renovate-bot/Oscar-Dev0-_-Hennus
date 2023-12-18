@@ -1,5 +1,7 @@
 import { APIActionRowComponent } from "@discordjs/core"
-import { ButtonsBuilder, SelectMenuBuilder, TextInputBuilder } from ".."
+import { ButtonsBuilder } from "./buttons"
+import { SelectMenuBuilder } from "./selectmenu"
+import { TextInputBuilder } from "./textinput"
 
 export type ComponentFormats =
   | ButtonsBuilder

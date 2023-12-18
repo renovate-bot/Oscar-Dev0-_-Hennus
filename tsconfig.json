@@ -13,6 +13,7 @@
     "preserveConstEnums": true,
     "removeComments": false,
     "outDir": "app",
+    "rootDir": "src",
     "types": ["node"],
 
     /* Typing */

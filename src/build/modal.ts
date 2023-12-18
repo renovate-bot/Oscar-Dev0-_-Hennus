@@ -1,6 +1,6 @@
 import { ComponentType } from "@discordjs/core"
-import { ActionRowBuilder, TextInputBuilder } from ".."
-
+import { ActionRowBuilder } from "./actionrow"
+import { TextInputBuilder } from "./textinput"
 export class ModalBuilder {
   public components: Array<ActionRowBuilder>
   public title?: string

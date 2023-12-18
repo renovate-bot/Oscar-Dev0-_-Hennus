@@ -4,7 +4,7 @@ import { Client } from "../client"
 export class ModelsBase<T = any> {
   public data: T
   public client: Client
-  constructor(_d: T, _c: Client) {
+  constructor(_c: Client, _d: T ) {
     Object.defineProperty(this, "data", { value: _d })
     Object.defineProperty(this, "client", { value: _c })
   }

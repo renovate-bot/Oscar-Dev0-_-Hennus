@@ -5,5 +5,6 @@ export * from "./types"
 export * from "./utils"
 export * from "./build"
 
-export { version as Version } from "../package.json"
+export const Version = "0.0.1-Test";
+
 export * from "discord-api-types/v10"

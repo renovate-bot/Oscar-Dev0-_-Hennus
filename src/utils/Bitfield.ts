@@ -71,6 +71,7 @@ export class BitField<N extends number | bigint> {
   static resolve<N extends number | bigint>(bit: BitFieldResolvable<N>): N {
     const { DefaultBit, Flags } = this
     if (typeof bit == "bigint" && bit >= DefaultBit) return bit as N
+    if (typeof bit == "number" && bit >= DefaultBit) return bit as N
     if (bit instanceof BitField) return bit.bitfield as N
     if (Array.isArray(bit)) {
       return bit.map((bit_) => this.resolve(bit_)).reduce(

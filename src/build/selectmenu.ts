@@ -3,7 +3,8 @@ import {
   APIStringSelectComponent,
   ComponentType,
 } from "@discordjs/core"
-import { _Omit, BaseSelectMenuBuilder } from ".."
+import { BaseSelectMenuBuilder } from "./BaseBuilders"
+import { _Omit } from "../types"
 
 export class StringSelectMenuBuilder
   extends BaseSelectMenuBuilder<ComponentType.StringSelect>

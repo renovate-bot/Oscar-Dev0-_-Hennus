@@ -84,10 +84,10 @@ export class ActionBase<
   private _type: K
   public client: Client
 
-  constructor({ t, d }: D, cleint: Client) {
+  constructor({ t, d }: D, client: Client) {
     Object.defineProperty(this, "data", { value: d })
     Object.defineProperty(this, "_type", { value: t })
-    Object.defineProperty(this, "client", { value: cleint })
+    Object.defineProperty(this, "client", { value: client })
   }
 
   public get type() {

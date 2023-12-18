@@ -1,5 +1,6 @@
-import { cacheManager, Client } from ".."
 import { Collection } from "@discordjs/collection"
+import { cacheManager } from "./cacheManager"
+import { Client } from "../client"
 
 export class DataManager<Key = any, Value = any> {
   public client: Client
@@ -21,10 +22,8 @@ export class DataManager<Key = any, Value = any> {
   }
 
   resolveId(id: Key) {
-    const value = this.cache.get(id)
-    if (value) return value
-    return undefined
-  }
+    return this.cache.get(id)
+  };
 
   setCache(Iterable?: Iterable<readonly [Key, Value]>) {
     const collection = new Collection<Key, Value>(Iterable)

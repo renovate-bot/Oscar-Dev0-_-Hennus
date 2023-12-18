@@ -1,12 +1,10 @@
 import { APIDMChannel, APIGroupDMChannel } from "@discordjs/core"
-import { BaseChannel, Client } from ".."
+import { BaseChannel } from "./baseChannel"
+import { Client } from "../client"
 
 export class DMChannel<
   T extends APIGroupDMChannel | APIDMChannel = APIDMChannel,
 > extends BaseChannel<T> {
-  constructor(client: Client, data: T) {
-    super(client, data)
-  }
 
   get recipients() {
     return this.data.recipients
@@ -26,9 +24,7 @@ export class DMChannel<
 }
 
 export class GroupDMChannel extends DMChannel<APIGroupDMChannel> {
-  constructor(client: Client, data: APIGroupDMChannel) {
-    super(client, data)
-  }
+
 
   get ownerId() {
     return this.data.owner_id

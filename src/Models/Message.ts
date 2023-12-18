@@ -2,19 +2,13 @@ import {
   RESTPatchAPIChannelMessageJSONBody,
   RESTPostAPIChannelMessageJSONBody,
 } from "@discordjs/core"
-import {
-  _Omit,
-  Client,
-  MessageChannelCreate,
-  MessageOptions,
-  ModelsBase,
-} from ".."
 import { RawFile } from "@discordjs/rest"
+import { DiscordSnowflake } from "@sapphire/snowflake"
+import { ModelsBase } from "./baseModels"
+import { MessageChannelCreate, MessageOptions } from "../types"
+
 
 export class Message extends ModelsBase<MessageOptions> {
-  constructor(client: Client, data: MessageOptions) {
-    super(data, client)
-  }
 
   get id() {
     return this.data.id
@@ -56,6 +50,22 @@ export class Message extends ModelsBase<MessageOptions> {
   get channelID() {
     return this.data.channel_id
   }
+
+  get createdTimestamp() {
+    return DiscordSnowflake.timestampFrom(this.id)
+  }
+
+  get createdAt() {
+    return new Date(this.createdTimestamp)
+  }
+
+  get isPinned() {
+    return this.data.pinned
+  }
+
+  get channel(){
+    return this.client.channels.resolveId(this.channelID);
+  };
 
   async reply(options: MessageChannelCreate) {
     try {
@@ -173,10 +183,6 @@ export class Message extends ModelsBase<MessageOptions> {
     } catch (error) {
       throw error
     }
-  }
-
-  get isPinned() {
-    return this.data.pinned
   }
 
   async pin(reason?: string) {

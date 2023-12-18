@@ -2,7 +2,9 @@ import {
   MessageFlags,
   RESTPostAPIChannelMessageJSONBody,
 } from "@discordjs/core"
-import { _Omit, ActionRowBuilder, AttachmentBuilder, EmbedBuilder } from ".."
+import { _Omit } from "./Util"
+import { ActionRowBuilder, AttachmentBuilder, EmbedBuilder } from "../build"
+
 
 type OmitMessage =
   & _Omit<

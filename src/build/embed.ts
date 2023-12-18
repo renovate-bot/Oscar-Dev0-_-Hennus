@@ -1,5 +1,5 @@
 import { APIEmbed, EmbedType } from "@discordjs/core"
-import { colorType, resolvedColor } from ".."
+import { colorType, resolvedColor } from "../utils"
 
 export class EmbedBuilder {
   public type: APIEmbed["type"] = EmbedType.Rich

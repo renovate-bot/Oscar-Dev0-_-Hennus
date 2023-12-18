@@ -40,7 +40,7 @@ import {
   GatewayTypingStartDispatchData,
   GatewayWebhooksUpdateDispatchData,
 } from "@discordjs/core"
-import { Channel, Message } from ".."
+import { Channel, ClientUser, Guild, Message, User } from "../Models"
 
 export interface ListEvents {
   ApplicationCommandPermissionsUpdate: [
@@ -56,8 +56,8 @@ export interface ListEvents {
   ChannelUpdate: [Channel]
   GuildBanAdd: []
   GuildBanRemove: []
-  GuildCreate: []
-  GuildDelete: []
+  GuildCreate: [ Guild ]
+  GuildDelete: [ Guild | undefined ]
   GuildEmojisUpdate: [GatewayGuildEmojisUpdateDispatchData]
   GuildIntegrationsUpdate: [GatewayGuildIntegrationsUpdateDispatchData]
   GuildMemberAdd: []
@@ -87,7 +87,7 @@ export interface ListEvents {
   StageInstanceCreate: [GatewayStageInstanceCreateDispatchData]
   StageInstanceDelete: [GatewayStageInstanceDeleteDispatchData]
   StageInstanceUpdate: [GatewayStageInstanceUpdateDispatchData]
-  Ready: []
+  Ready: [ ClientUser ]
   Resumed: [GatewayResumedDispatch]
   ThreadCreate: [GatewayThreadCreateDispatchData]
   ThreadDelete: [GatewayThreadDeleteDispatchData]
@@ -96,7 +96,7 @@ export interface ListEvents {
   ThreadMemberUpdate: [GatewayThreadMemberUpdateDispatchData]
   ThreadUpdate: [GatewayThreadUpdateDispatchData]
   TypingStart: [GatewayTypingStartDispatchData]
-  UserUpdate: []
+  UserUpdate: [ User ]
   VoiceServerUpdate: []
   VoiceStateUpdate: []
   WebhooksUpdate: [GatewayWebhooksUpdateDispatchData]
@@ -114,10 +114,6 @@ export interface ListEvents {
     GatewayAutoModerationActionExecutionDispatchData,
   ]
   GuildAuditLogEntryCreate: [GatewayGuildAuditLogEntryCreateDispatchData]
-}
-
-export type EventsHandler = {
-  [K in keyof ListEvents]: (...args: ListEvents[K]) => unknown
 }
 
 export type MessageOptions = GatewayMessageCreateDispatchData

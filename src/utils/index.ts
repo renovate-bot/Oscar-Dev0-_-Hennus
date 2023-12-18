@@ -8,14 +8,8 @@ import {
   APIThreadChannel,
   ChannelType,
 } from "@discordjs/core"
-import {
-  BaseGuildChannel,
-  Channel,
-  Client,
-  DMChannel,
-  GroupDMChannel,
-  GuildTextChannel,
-} from ".."
+import { Client } from "../client"
+import { BaseGuildChannel, Channel, DMChannel, GroupDMChannel, GuildTextChannel } from "../Models"
 export * from "./colorResolved"
 export * from "./EmojiResolved"
 export * from "./Errors"

@@ -14,22 +14,17 @@ import {
 } from "@discordjs/core"
 import { channelMention } from "@discordjs/formatters"
 import { DiscordSnowflake } from "@sapphire/snowflake"
-import {
-  ChannelBitField,
-  Client,
-  GuildTextChannel,
-  Message,
-  MessageChannelCreate,
-  ModelsBase,
-  PermissionBitField,
-} from ".."
+
 import { RawFile } from "@discordjs/rest"
+import { ModelsBase } from "./baseModels"
+import { Client } from "../client"
+import { ChannelBitField, PermissionBitField } from "../utils"
+import { GuildTextChannel } from "./GuildChannel"
+import { MessageChannelCreate } from "../types"
+import { Message } from "./Message"
 
 export class BaseChannel<T extends APIChannel> extends ModelsBase<T> {
-  constructor(client: Client, data: T) {
-    super(data, client)
-  }
-
+  
   get id() {
     return this.data.id
   }

@@ -1,12 +1,10 @@
 import { APINewsChannel, APITextChannel } from "@discordjs/core"
-import { BaseGuildChannel, Client, MessagesManager } from ".."
+import { BaseGuildChannel } from "./baseChannel"
+import { MessagesManager } from "../manager"
 
 export class GuildTextChannel
   extends BaseGuildChannel<APITextChannel | APINewsChannel> {
   private _messages: MessagesManager
-  constructor(client: Client, data: APITextChannel | APINewsChannel) {
-    super(client, data)
-  }
 
   get messages() {
     if (!this._messages) {
