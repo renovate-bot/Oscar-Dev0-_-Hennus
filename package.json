@@ -1,7 +1,7 @@
 {
   "name": "hennus",
-  "version": "0.0.1-Test",
-  "description": "Una npm para discord ",
+  "version": "0.0.1-bjxetes68g6a5or",
+  "description": "Una npm para discord",
   "main": "index.js",
   "author": "OscarDev <oscargamer162004@gmail.com>",
   "license": "Apache-2.0",
@@ -49,7 +49,7 @@
     "node": ">=18"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
+    "registry": "https://registry.npmjs.org",
     "access": "public",
     "tag": "discord"
   }
