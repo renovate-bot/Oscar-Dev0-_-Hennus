@@ -14,7 +14,7 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  Git_Push:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +31,11 @@ jobs:
       - name: Deno Charge
         run: deno fmt && deno fmt --no-semicolons
         
-      - name: Git run
-        run: git 
-      
+      - name: Git add
+        run: git add . 
+        
+      - name: Git commit
+        run: git commit -m "Deno Change"
+
+      - name: Git push
+        run: git push
