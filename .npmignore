@@ -1,6 +1,11 @@
 src/
 tsconfig.json
 tsup.config.ts
+tsconfig.json
+SECURITY.md
+README.md
+LICENSE
+.github
 .gitignore
 yarn-error.log
-tests/
+test/

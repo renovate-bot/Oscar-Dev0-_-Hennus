@@ -1,6 +1,6 @@
 {
   "name": "hennus",
-  "version": "0.0.1-bjxetes68g6a5or",
+  "version": "0.0.1-bjxetes67g6a5or",
   "description": "Una npm para discord",
   "main": "index.js",
   "author": "OscarDev <oscargamer162004@gmail.com>",
@@ -18,7 +18,7 @@
     "fmt": "deno fmt && deno fmt --no-semicolons",
     "build#Npm": "yarn run build#clean && yarn publish",
     "build#test": "yarn run build#clean-old && tsc --declaration",
-    "test": "node tests",
+    "test": "node test",
     "build#clean-old": "rimraf -rf app && yarn run build#clean-old-type",
     "build#clean-old-type": "rimraf -rf typescript",
     "build#clean": "yarn run build#clean-old && tsup && tsc && yarn run clean#build",
