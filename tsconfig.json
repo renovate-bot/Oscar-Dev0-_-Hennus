@@ -31,7 +31,7 @@
     "node_modules",
     "app/**",
     "package.json",
-    "typescript/**"
+    "ts/**"
   ],
   "include": [
     "src/**/*.ts"

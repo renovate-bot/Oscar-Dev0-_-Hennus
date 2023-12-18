@@ -2,10 +2,10 @@
   "name": "hennus",
   "version": "0.0.1-bjxetes67g6a5or",
   "description": "Una npm para discord",
-  "main": "index.js",
+  "main": "app/index.js",
   "author": "OscarDev <oscargamer162004@gmail.com>",
   "license": "Apache-2.0",
-  "typings": "",
+  "types": "ts/index.d.ts",
   "keywords": [
     "api",
     "discord",
@@ -14,8 +14,8 @@
     "botdev"
   ],
   "scripts": {
-    "lint": "deno lint --rules-exclude=ban-ts-comment,no-inferrable-types,no-explicit-any",
-    "fmt": "deno fmt && deno fmt --no-semicolons",
+    "lint": "deno lint --rules-exclude=ban-ts-comment,no-inferrable-types,no-explicit-any ./src",
+    "fmt": "deno fmt && deno fmt --no-semicolons ./src",
     "build#Npm": "yarn run build#clean && yarn publish",
     "build#test": "yarn run build#clean-old && tsc --declaration",
     "test": "node test",

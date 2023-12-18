@@ -10,6 +10,7 @@ import {
 } from "@discordjs/core"
 import { UserBitField } from "../utils"
 import { DiscordSnowflake } from "@sapphire/snowflake"
+import { userMention } from "@discordjs/formatters"
 
 export class User extends ModelsBase<APIUser> {
   get id() {
@@ -94,9 +95,11 @@ export class User extends ModelsBase<APIUser> {
       options ?? ImageFormat.PNG,
     )
   }
+  get hexColor() {
+    return `#${this.color.toString(16).padStart(6, "0")}`
+  }
 
   toString() {
-    if (this.id) return `<@${this.id}>`
-    else return ""
+    return userMention(this.id)
   }
 }
