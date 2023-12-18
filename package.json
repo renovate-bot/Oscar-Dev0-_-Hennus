@@ -16,12 +16,12 @@
   "scripts": {
     "lint": "deno lint --rules-exclude=ban-ts-comment,no-inferrable-types,no-explicit-any",
     "fmt": "deno fmt && deno fmt --no-semicolons",
-    "build#Npm": "npm run build#clean && npm publish",
-    "build#test": "npm run build#clean-old && tsc --declaration",
-    "test": "node Tests",
-    "build#clean-old": "rimraf -rf app && npm run build#clean-old-type",
+    "build#Npm": "yarn run build#clean && yarn publish",
+    "build#test": "yarn run build#clean-old && tsc --declaration",
+    "test": "node tests",
+    "build#clean-old": "rimraf -rf app && yarn run build#clean-old-type",
     "build#clean-old-type": "rimraf -rf typescript",
-    "build#clean": "npm run build#clean-old && tsup && tsc && npm run clean#build",
+    "build#clean": "yarn run build#clean-old && tsup && tsc && yarn run clean#build",
     "clean#build": "rimraf typescript/index.js"
   },
   "homepage": "https://github.com/Oscar-Dev0/Hennus",

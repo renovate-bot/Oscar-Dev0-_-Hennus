@@ -41,7 +41,7 @@ export class ClientUser extends User {
     if (Array.isArray(shards)) {
       for (const shard of shards) {
         try {
-            //@ts-ignore
+          //@ts-ignore
           await this.client.ws.send(shard, data)
         } catch {
           continue
