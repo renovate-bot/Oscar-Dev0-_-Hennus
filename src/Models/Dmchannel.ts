@@ -1,6 +1,5 @@
 import { APIDMChannel, APIGroupDMChannel } from "@discordjs/core"
 import { BaseChannel } from "./baseChannel"
-import { Client } from "../client"
 
 export class DMChannel<
   T extends APIGroupDMChannel | APIDMChannel = APIDMChannel,

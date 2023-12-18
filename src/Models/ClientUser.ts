@@ -38,10 +38,10 @@ export class ClientUser extends User {
         status: this.format(status.status),
       },
     }
-    //@ts-ignore
     if (Array.isArray(shards)) {
-      for (let shard of shards) {
+      for (const shard of shards) {
         try {
+            //@ts-ignore
           await this.client.ws.send(shard, data)
         } catch {
           continue
