@@ -1,36 +1,37 @@
-import { APIActionRowComponent } from "@discordjs/core"
-import { ButtonsBuilder } from "./buttons"
-import { SelectMenuBuilder } from "./selectmenu"
-import { TextInputBuilder } from "./textinput"
+import { APIActionRowComponent } from "@discordjs/core";
+import { ButtonsBuilder } from "./buttons";
+import { SelectMenuBuilder } from "./selectmenu";
+import { TextInputBuilder } from "./textinput";
 
 export type ComponentFormats =
   | ButtonsBuilder
   | SelectMenuBuilder
-  | TextInputBuilder
+  | TextInputBuilder;
 
 export class ActionRowBuilder<T extends ComponentFormats = any>
-  implements APIActionRowComponent<T> {
-  public type = 1
-  public components: T[] = []
+  implements APIActionRowComponent<T>
+{
+  public type = 1;
+  public components: T[] = [];
 
   constructor(options?: ComponentFormats[]) {
     if (options) {
-      this.save(options)
+      this.save(options);
     }
   }
 
   public AddComponents(components: ComponentFormats[]): this {
-    this.save(components)
-    return this
+    this.save(components);
+    return this;
   }
 
   public AddComponent(component: ComponentFormats): this {
-    this.save([component])
-    return this
+    this.save([component]);
+    return this;
   }
 
   private save(components: ComponentFormats[]): void {
     //@ts-ignore
-    this.components.push(...components)
+    this.components.push(...components);
   }
 }

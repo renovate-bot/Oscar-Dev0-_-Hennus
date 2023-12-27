@@ -1,40 +1,40 @@
-import { APIDMChannel, APIGroupDMChannel } from "@discordjs/core"
-import { BaseChannel } from "./baseChannel"
+import { APIDMChannel, APIGroupDMChannel } from "@discordjs/core";
+import { BaseChannel } from "./baseChannel";
 
 export class DMChannel<
   T extends APIGroupDMChannel | APIDMChannel = APIDMChannel,
 > extends BaseChannel<T> {
   get recipients() {
-    return this.data.recipients
+    return this.data.recipients;
   }
 
   get name() {
-    return this.data.name
+    return this.data.name;
   }
 
   get LastMesssageId() {
-    return this.data.last_message_id
+    return this.data.last_message_id;
   }
 
   get LastPinTimestamp() {
-    return this.data.last_pin_timestamp
+    return this.data.last_pin_timestamp;
   }
 }
 
 export class GroupDMChannel extends DMChannel<APIGroupDMChannel> {
   get ownerId() {
-    return this.data.owner_id
+    return this.data.owner_id;
   }
 
   get icon() {
-    return this.data.icon
+    return this.data.icon;
   }
 
   get manager() {
-    return this.data.managed
+    return this.data.managed;
   }
 
   get applicationId() {
-    return this.data.application_id
+    return this.data.application_id;
   }
 }

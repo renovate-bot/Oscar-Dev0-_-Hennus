@@ -1,14 +1,14 @@
-import { ClientUser } from "../.."
-import { ActionBase } from "./base"
-import { GatewayReadyDispatch } from "@discordjs/core"
+import { ClientUser } from "../..";
+import { ActionBase } from "./base";
+import { GatewayReadyDispatch } from "@discordjs/core";
 
 export class Ready extends ActionBase<GatewayReadyDispatch> {
   public get toData() {
-    const user = new ClientUser(this.client, this.data)
+    const user = new ClientUser(this.client, this.data);
 
     //@ts-ignore
-    this.client._patch({ user })
+    this.client._patch({ user });
 
-    return super.toJSON(this.type, user)
+    return super.toJSON(this.type, user);
   }
 }

@@ -7,41 +7,44 @@ import {
   APIGuildVoiceChannel,
   APIThreadChannel,
   ChannelType,
-} from "@discordjs/core"
-import { Client } from "../client"
+} from "@discordjs/core";
+import { Client } from "../client";
 import {
   BaseGuildChannel,
   Channel,
   DMChannel,
   GroupDMChannel,
   GuildTextChannel,
-} from "../Models"
-export * from "./colorResolved"
-export * from "./EmojiResolved"
-export * from "./Errors"
+} from "../Models";
+export * from "./colorResolved";
+export * from "./EmojiResolved";
+export * from "./Errors";
 
-export * from "./Bitfield"
-export * from "./BaseBitField"
-export * from "./Permissions"
+export * from "./Bitfield";
+export * from "./BaseBitField";
+export * from "./Permissions";
 
 export function ChannelResolved(client: Client, data: APIChannel) {
-  let channel: Channel
+  let channel: Channel;
   if (data.type == ChannelType.GuildCategory) {
-    channel = new BaseGuildChannel<APIGuildCategoryChannel>(client, data)
+    channel = new BaseGuildChannel<APIGuildCategoryChannel>(client, data);
   } else if (
     data.type == ChannelType.GuildText ||
     data.type == ChannelType.GuildAnnouncement
-  ) channel = new GuildTextChannel(client, data)
-  else if (data.type == ChannelType.DM) channel = new DMChannel(client, data)
+  )
+    channel = new GuildTextChannel(client, data);
+  else if (data.type == ChannelType.DM) channel = new DMChannel(client, data);
   else if (data.type == ChannelType.GroupDM) {
-    channel = new GroupDMChannel(client, data)
-  } else {channel = new BaseGuildChannel<
+    channel = new GroupDMChannel(client, data);
+  } else {
+    channel = new BaseGuildChannel<
       | APIGuildVoiceChannel
       | APIGuildStageVoiceChannel
       | APIThreadChannel
       | APIGuildForumChannel
       | APIGuildMediaChannel
-    >(client, data)}
+    >(client, data);
+  }
 
-  return channel
+  return channel;
 }
