@@ -39,27 +39,28 @@ import {
   GatewayThreadUpdateDispatchData,
   GatewayTypingStartDispatchData,
   GatewayWebhooksUpdateDispatchData,
+ WithIntrinsicProps
 } from "@discordjs/core";
 import { Channel, ClientUser, Guild, Message, User } from "../Models";
 
 export interface ListEvents {
   ApplicationCommandPermissionsUpdate: [
-    GatewayApplicationCommandPermissionsUpdateDispatchData,
+          WithIntrinsicProps<GatewayApplicationCommandPermissionsUpdateDispatchData>,
   ];
-  EntitlementCreate: [GatewayEntitlementCreateDispatchData];
-  EntitlementDelete: [GatewayEntitlementDeleteDispatchData];
-  EntitlementUpdate: [GatewayEntitlementUpdateDispatchData];
+  EntitlementCreate: [WithIntrinsicProps<GatewayEntitlementCreateDispatchData>];
+  EntitlementDelete: [WithIntrinsicProps<GatewayEntitlementDeleteDispatchData>];
+  EntitlementUpdate: [WithIntrinsicProps<GatewayEntitlementUpdateDispatchData>];
   GuildMemberRoleUpdate: [];
   ChannelCreate: [Channel];
   ChannelDelete: [Channel];
-  ChannelPinsUpdate: [GatewayChannelPinsUpdateDispatchData];
+  ChannelPinsUpdate: [WithIntrinsicProps<GatewayChannelPinsUpdateDispatchData>];
   ChannelUpdate: [Channel];
   GuildBanAdd: [];
   GuildBanRemove: [];
   GuildCreate: [Guild];
   GuildDelete: [Guild | undefined];
-  GuildEmojisUpdate: [GatewayGuildEmojisUpdateDispatchData];
-  GuildIntegrationsUpdate: [GatewayGuildIntegrationsUpdateDispatchData];
+  GuildEmojisUpdate: [WithIntrinsicProps<GatewayGuildEmojisUpdateDispatchData>];
+  GuildIntegrationsUpdate: [WithIntrinsicProps<GatewayGuildIntegrationsUpdateDispatchData>];
   GuildMemberAdd: [];
   GuildMemberRemove: [];
   GuildMembersChunk: [];
@@ -67,53 +68,53 @@ export interface ListEvents {
   GuildRoleCreate: [];
   GuildRoleDelete: [];
   GuildRoleUpdate: [];
-  GuildStickersUpdate: [GatewayGuildStickersUpdateDispatchData];
+  GuildStickersUpdate: [WithIntrinsicProps<GatewayGuildStickersUpdateDispatchData>];
   GuildUpdate: [];
-  IntegrationCreate: [GatewayIntegrationCreateDispatchData];
-  IntegrationDelete: [GatewayIntegrationDeleteDispatchData];
-  IntegrationUpdate: [GatewayIntegrationUpdateDispatchData];
+  IntegrationCreate: [WithIntrinsicProps<GatewayIntegrationCreateDispatchData>];
+  IntegrationDelete: [WithIntrinsicProps<GatewayIntegrationDeleteDispatchData>];
+  IntegrationUpdate: [WithIntrinsicProps<GatewayIntegrationUpdateDispatchData>];
   InteractionCreate: [];
-  InviteCreate: [GatewayInviteCreateDispatchData];
-  InviteDelete: [GatewayInviteDeleteDispatchData];
+  InviteCreate: [WithIntrinsicProps<GatewayInviteCreateDispatchData>];
+  InviteDelete: [WithIntrinsicProps<GatewayInviteDeleteDispatchData>];
   MessageCreate: [Message];
   MessageDelete: [Message | undefined];
   MessageDeleteBulk: [Message[]];
-  MessageReactionAdd: [GatewayMessageReactionAddDispatchData];
-  MessageReactionRemove: [GatewayMessageReactionRemoveDispatchData];
-  MessageReactionRemoveAll: [GatewayMessageReactionRemoveAllDispatchData];
-  MessageReactionRemoveEmoji: [GatewayMessageReactionRemoveEmojiDispatchData];
+  MessageReactionAdd: [WithIntrinsicProps<GatewayMessageReactionAddDispatchData>];
+  MessageReactionRemove: [WithIntrinsicProps<GatewayMessageReactionRemoveDispatchData>];
+  MessageReactionRemoveAll: [WithIntrinsicProps<GatewayMessageReactionRemoveAllDispatchData>];
+  MessageReactionRemoveEmoji: [WithIntrinsicProps<GatewayMessageReactionRemoveEmojiDispatchData>];
   MessageUpdate: [Message];
   PresenceUpdate: [];
-  StageInstanceCreate: [GatewayStageInstanceCreateDispatchData];
-  StageInstanceDelete: [GatewayStageInstanceDeleteDispatchData];
-  StageInstanceUpdate: [GatewayStageInstanceUpdateDispatchData];
+  StageInstanceCreate: [WithIntrinsicProps<GatewayStageInstanceCreateDispatchData>];
+  StageInstanceDelete: [WithIntrinsicProps<GatewayStageInstanceDeleteDispatchData>];
+  StageInstanceUpdate: [WithIntrinsicProps<GatewayStageInstanceUpdateDispatchData>];
   Ready: [ClientUser];
-  Resumed: [GatewayResumedDispatch];
-  ThreadCreate: [GatewayThreadCreateDispatchData];
-  ThreadDelete: [GatewayThreadDeleteDispatchData];
-  ThreadListSync: [GatewayThreadListSyncDispatchData];
-  ThreadMembersUpdate: [GatewayThreadMembersUpdateDispatchData];
-  ThreadMemberUpdate: [GatewayThreadMemberUpdateDispatchData];
-  ThreadUpdate: [GatewayThreadUpdateDispatchData];
-  TypingStart: [GatewayTypingStartDispatchData];
+  Resumed: [WithIntrinsicProps<GatewayResumedDispatch>];
+  ThreadCreate: [WithIntrinsicProps<GatewayThreadCreateDispatchData>];
+  ThreadDelete: [WithIntrinsicProps<GatewayThreadDeleteDispatchData>];
+  ThreadListSync: [WithIntrinsicProps<GatewayThreadListSyncDispatchData>];
+  ThreadMembersUpdate: [WithIntrinsicProps<GatewayThreadMembersUpdateDispatchData>];
+  ThreadMemberUpdate: [WithIntrinsicProps<GatewayThreadMemberUpdateDispatchData>];
+  ThreadUpdate: [WithIntrinsicProps<GatewayThreadUpdateDispatchData>];
+  TypingStart: [WithIntrinsicProps<GatewayTypingStartDispatchData>];
   UserUpdate: [User];
   VoiceServerUpdate: [];
   VoiceStateUpdate: [];
-  WebhooksUpdate: [GatewayWebhooksUpdateDispatchData];
-  GuildScheduledEventCreate: [GatewayGuildScheduledEventCreateDispatchData];
-  GuildScheduledEventUpdate: [GatewayGuildScheduledEventUpdateDispatchData];
-  GuildScheduledEventDelete: [GatewayGuildScheduledEventDeleteDispatchData];
-  GuildScheduledEventUserAdd: [GatewayGuildScheduledEventUserAddDispatchData];
+  WebhooksUpdate: [WithIntrinsicProps<GatewayWebhooksUpdateDispatchData>];
+  GuildScheduledEventCreate: [WithIntrinsicProps<GatewayGuildScheduledEventCreateDispatchData>];
+  GuildScheduledEventUpdate: [WithIntrinsicProps<GatewayGuildScheduledEventUpdateDispatchData>];
+  GuildScheduledEventDelete: [WithIntrinsicProps<GatewayGuildScheduledEventDeleteDispatchData>];
+  GuildScheduledEventUserAdd: [WithIntrinsicProps<GatewayGuildScheduledEventUserAddDispatchData>];
   GuildScheduledEventUserRemove: [
-    GatewayGuildScheduledEventUserRemoveDispatchData,
-  ];
-  AutoModerationRuleCreate: [GatewayAutoModerationRuleCreateDispatchData];
-  AutoModerationRuleUpdate: [GatewayAutoModerationRuleUpdateDispatchData];
-  AutoModerationRuleDelete: [GatewayAutoModerationRuleDeleteDispatchData];
+          WithIntrinsicProps<GatewayGuildScheduledEventUserRemoveDispatchData>
+ ];
+  AutoModerationRuleCreate: [WithIntrinsicProps<GatewayAutoModerationRuleCreateDispatchData>];
+  AutoModerationRuleUpdate: [WithIntrinsicProps<GatewayAutoModerationRuleUpdateDispatchData>];
+  AutoModerationRuleDelete: [WithIntrinsicProps<GatewayAutoModerationRuleDeleteDispatchData>];
   AutoModerationActionExecution: [
-    GatewayAutoModerationActionExecutionDispatchData,
+          WithIntrinsicProps<GatewayAutoModerationActionExecutionDispatchData>,
   ];
-  GuildAuditLogEntryCreate: [GatewayGuildAuditLogEntryCreateDispatchData];
+  GuildAuditLogEntryCreate: [WithIntrinsicProps<GatewayGuildAuditLogEntryCreateDispatchData>];
 }
 
 export type MessageOptions = GatewayMessageCreateDispatchData;

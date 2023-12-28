@@ -20,9 +20,9 @@
     "build#test": "yarn run build#clean-old && tsc --declaration",
     "test": "node test",
     "build#clean-old": "rimraf -rf app && yarn run build#clean-old-type",
-    "build#clean-old-type": "rimraf -rf typescript",
+    "build#clean-old-type": "rimraf -rf ts",
     "build#clean": "yarn run build#clean-old && tsup && tsc && yarn run clean#build",
-    "clean#build": "rimraf typescript/index.js"
+    "clean#build": "rimraf ts/index.js"
   },
   "homepage": "https://github.com/Oscar-Dev0/Hennus",
   "repository": {
