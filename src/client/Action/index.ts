@@ -40,7 +40,7 @@ export class ActionEvents {
       const action = new ActionBase(data, client);
 
       //@ts-ignore
-      json = action.toJSON(action.type, action.data);
+      json = action.toJSON(action.type, { data: action.data, shardId: client.user.shard.id, api: client.api });
     }
     return json;
   }
