@@ -6,7 +6,7 @@ import {
   PresenceUpdateStatus,
 } from "@discordjs/core";
 import { Client } from "../client";
-import { User } from "./user";
+import { User } from "./User";
 import { ApplicationBitField } from "../utils";
 import { _Omit } from "../types";
 

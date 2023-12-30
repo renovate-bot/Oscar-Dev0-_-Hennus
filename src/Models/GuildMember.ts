@@ -6,7 +6,7 @@ import {
 import { ModelsBase } from "./baseModels";
 import { Guild } from "./Guild";
 import { Client } from "../client";
-import { User } from "./user";
+import { User } from "./User";
 import { userMention } from "@discordjs/formatters";
 import { MemberBitField } from "../utils";
 
