@@ -40,6 +40,8 @@ import {
   GatewayTypingStartDispatchData,
   GatewayWebhooksUpdateDispatchData,
   WithIntrinsicProps,
+        GatewayMessageUpdateDispatchData,
+        GatewayMessageDeleteDispatchData,
 } from "@discordjs/core";
 import { Channel, ClientUser, Guild, Message, User } from "../Models";
 
@@ -81,7 +83,7 @@ export interface ListEvents {
   InviteCreate: [WithIntrinsicProps<GatewayInviteCreateDispatchData>];
   InviteDelete: [WithIntrinsicProps<GatewayInviteDeleteDispatchData>];
   MessageCreate: [Message];
-  MessageDelete: [Message | undefined];
+  MessageDelete: [WithIntrinsicProps<GatewayMessageDeleteDispatchData>,Message | undefined];
   MessageDeleteBulk: [Message[]];
   MessageReactionAdd: [
     WithIntrinsicProps<GatewayMessageReactionAddDispatchData>,
@@ -95,7 +97,7 @@ export interface ListEvents {
   MessageReactionRemoveEmoji: [
     WithIntrinsicProps<GatewayMessageReactionRemoveEmojiDispatchData>,
   ];
-  MessageUpdate: [Message];
+  MessageUpdate: [WithIntrinsicProps<GatewayMessageUpdateDispatchData>, Message | undefined];
   PresenceUpdate: [];
   StageInstanceCreate: [
     WithIntrinsicProps<GatewayStageInstanceCreateDispatchData>,

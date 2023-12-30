@@ -12,7 +12,7 @@ export class MessageUpdate extends ActionBase<GatewayMessageUpdateDispatch> {
       msg = channel.messages.resolveId(this.data.id);
 
       //@ts-ignore
-      channel.messages.cache.set(this.data.id, msg._patch(this.data));
+      if(msg) channel.messages.cache.set(this.data.id, msg._patch(this.data));
       this.client.channels.set(channel.id, channel);
       if (guild) {
         guild.channels.set(channel.id, channel);
@@ -20,6 +20,9 @@ export class MessageUpdate extends ActionBase<GatewayMessageUpdateDispatch> {
       }
     }
 
-    return super.toJSON(this.type, msg);
+    return super.toJSON(this.type,{data: this.data,
+                                  shardId: this.client.user.shard.id,
+                                  api: this.client.api,
+}, msg);
   }
 }

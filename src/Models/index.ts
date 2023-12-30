@@ -3,7 +3,7 @@ export * from "./Message";
 export * from "./baseModels";
 export * from "./baseChannel";
 export * from "./ClientUser";
-export * from "./user";
+export * from "./User";
 export * from "./GuildMember";
 export * from "./Guild";
 
