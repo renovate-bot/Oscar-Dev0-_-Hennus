@@ -197,4 +197,11 @@ export class Message extends ModelsBase<MessageOptions> {
   toString() {
     return this.id;
   }
+
+private _patch(data: any) {
+if(typeof data != "object") return this;
+        if(data.content != this.content ) this.data.content = data.content;
+        
+        return this;
+}
 }
