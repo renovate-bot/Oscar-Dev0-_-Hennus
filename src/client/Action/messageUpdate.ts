@@ -4,7 +4,6 @@ import { GatewayMessageUpdateDispatch } from "@discordjs/core";
 
 export class MessageUpdate extends ActionBase<GatewayMessageUpdateDispatch> {
   public get toData() {
-          
     const channel = this.client.channels.cache.get(this.data.channel_id);
     const guild = this.client.guilds.cache.get(this.data.guild_id ?? "");
     //const guild = 0;
@@ -12,8 +11,8 @@ export class MessageUpdate extends ActionBase<GatewayMessageUpdateDispatch> {
     if (channel && channel.isTextBased()) {
       msg = channel.messages.resolveId(this.data.id);
 
-            //@ts-ignore
-  channel.messages.cache.set(this.data.id, msg._patch(this.data));
+      //@ts-ignore
+      channel.messages.cache.set(this.data.id, msg._patch(this.data));
       this.client.channels.set(channel.id, channel);
       if (guild) {
         guild.channels.set(channel.id, channel);
