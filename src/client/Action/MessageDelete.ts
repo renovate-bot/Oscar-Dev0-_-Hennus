@@ -18,12 +18,14 @@ export class MessageDelete extends ActionBase<GatewayMessageDeleteDispatch> {
       }
     }
 
-    return super.toJSON(this.type,
-                        {
-                                data: this.data,
+    return super.toJSON(
+      this.type,
+      {
+        data: this.data,
         shardId: this.client.user.shard.id,
         api: this.client.api,
-      
-                        }, msg);
+      },
+      msg,
+    );
   }
 }
